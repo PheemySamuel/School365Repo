@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Students.Master.cs" Inherits="School365.Student.Student" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Student</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        
+    </asp:ContentPlaceHolder>
+    <link href="../css/foundation.min.css" rel="stylesheet" />
+    <style type="text/css">
+        .auto-style1 {
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+     <nav class="top-bar" style="background-color:#0094ff" data-topbar="">
+                <ul class="title-area">
+                    <li class="name">
+                        <h1><a href="#"><span class="auto-style1">School 365</span> </a></h1>
+                    </li>
+                    <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+                </ul>
+
+            </nav>  
+         
+    <div>
+        <asp:ContentPlaceHolder ID="header" runat="server">
+            
+             
+        </asp:ContentPlaceHolder>
+    </div>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="body" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

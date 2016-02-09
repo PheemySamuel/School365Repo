@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="School365.Admin.Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Administrator</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="../css/foundation.min.css" rel="stylesheet" />
+    <style type="text/css">
+        .auto-style1 {
+            font-size: larger;
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/foundation/foundation.js"></script>
+    <script src="../js/foundation/foundation.topbar.js"></script>
+   <style>
+       nav top-bar docs-bar hide-for-small{
+           z-index:999;
+       }
+   </style>
+
+</head>
+<body>
+
+
+    <div>       
+        <asp:ContentPlaceHolder ID="header" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="body" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/foundation/foundation.js"></script>
+    <script src="../js/foundation/foundation.topbar.js"></script>
+    
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>
