@@ -5,13 +5,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 73px;
+            height: 64px;
+        }
+        .auto-style2 {
+            width: 27px;
+        }
+        .auto-style3 {
+            width: 25px;
+        }
+        .auto-style4 {
+            width: 31px;
+        }
+        .auto-style5 {
+            width: 23px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:DropDownList ID=""
+      <asp:TextBox ID="subCode" runat="server" placeholder="Subject Code"></asp:TextBox>
+        <asp:DropDownList ID="level" runat="server">
+            <asp:ListItem>100</asp:ListItem>
+            <asp:ListItem>200</asp:ListItem>
+            <asp:ListItem>300</asp:ListItem>           
+        </asp:DropDownList>
+        <asp:Button ID="getAllStudent" runat="server" Text="Get Students" OnClick="getAllStudent_Click" />
         <p>
-            <img class="auto-style42" src="../Student/ImageStorage/Image2.PNG" />
-        </p>
+            &nbsp;<img alt="" class="auto-style1" src="Image2.PNG" /></p>
         <p align="center">
             FEDERAL COLLEGE OF EDUCATION,  
 
@@ -22,7 +45,7 @@
                                 
         </p>
         <p align="center">
-            PDE Exam Mark Sheet 
+            NCE Exam Mark Sheet 
 
         </p>
         <hr />
@@ -49,7 +72,7 @@
                     <span class="auto-style13">EXAM(100%)</span></th>
                 <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;"><span class="auto-style13">H.O.D</span><br class="auto-style13" />
                     <span class="auto-style13">&nbsp;EXTERNAL</span><br class="auto-style13" />
-                    <span class="auto-style13">&nbsp;MODEATOR'S 
+                    <span class="auto-style13">&nbsp;MODERATOR'S 
                     </span>
                     <br class="auto-style13" />
                     <span class="auto-style13">REMARK</span></th>
@@ -59,10 +82,10 @@
                 <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;"></th>
                 <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;"></th>
                 <th style="border: thin solid #000000" class="auto-style6"></th>
-                <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style30">1</th>
-                <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style30">2</th>
-                <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style30">3</th>
-                <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style40">4</th>
+                <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style5">1</th>
+                <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style4">2</th>
+                <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style3">3</th>
+                <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style2">4</th>
                 <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style32"></th>
                 <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style40">1</th>
                 <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;" class="auto-style40">2</th>
@@ -75,6 +98,35 @@
                 <th style="border-bottom: 1px solid #aaa; border-top: 1px solid #aaa; border-left: 1px solid #aaa; border-right: 1px solid #aaa;"></th>
             </tr>
 
+            
+                <%
+                    foreach (string setAllStudentsMatric in  AllStudentsMatric)
+                    {
+                        string getSubComb = (from d in db.Results where d.MatricNo.Trim() == setAllStudentsMatric.Trim() join f in db.SubjectCombinations on d.SubjectCombinID equals f.SubjectCombinID select f.SubjectCombinName).FirstOrDefault();
+                        SerialValue = SerialValue + 1;
+                      %> 
+            <tr>
+                <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style12"><%Response.Write(SerialValue); %></td>
+                    <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style12"><%Response.Write(setAllStudentsMatric); %></td>  
+                    <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style12"><%Response.Write(getSubComb); %></td>
+                    <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style5"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style4"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style3"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style2"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style32"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style41"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style41"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style41"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style39"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style39"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style41"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style37"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;" class="auto-style38"></td>
+                     <td style="border-bottom: 1px solid #aaa; border-top:1px solid #aaa; border-left:1px solid #aaa; border-right:1px solid #aaa;"></td> 
+
+                 <%   } %>
+            </tr>
+            </table>
              <p align="left">
             NAME OF EXAMINER__________________________________SIGNATURE_________________________&nbsp;&nbsp;&nbsp; DATE_________________________</p>
         <p align="left">

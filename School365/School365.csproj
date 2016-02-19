@@ -46,6 +46,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.EntityDataSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.EntityDataSource.6.0.0\lib\net40\Microsoft.AspNet.EntityDataSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -84,6 +88,7 @@
     <Content Include="Admin\Settings\Session.aspx" />
     <Content Include="Admin\Student\AddCourseForRegistered.aspx" />
     <Content Include="Admin\Student\AddStudents.aspx" />
+    <Content Include="Admin\Student\CourseForm.aspx" />
     <Content Include="Admin\Student\GenerateMatric.aspx" />
     <Content Include="Admin\Student\InsertPin.aspx" />
     <Content Include="Admin\Student\ScoreStudent.aspx" />
@@ -151,7 +156,9 @@
     <Content Include="js\foundation\foundation.topbar.js" />
     <Content Include="js\jquery.js" />
     <Content Include="Testing.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Admin.Master.cs">
@@ -272,6 +279,13 @@
     </Compile>
     <Compile Include="Admin\Student\AddStudents.aspx.designer.cs">
       <DependentUpon>AddStudents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Student\CourseForm.aspx.cs">
+      <DependentUpon>CourseForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Student\CourseForm.aspx.designer.cs">
+      <DependentUpon>CourseForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Student\GenerateMatric.aspx.cs">
       <DependentUpon>GenerateMatric.aspx</DependentUpon>
